@@ -59,13 +59,8 @@ def main():
                     print(channel.make_video(vidname))
 
                 elif action == "views":
-                    if len(channel.videos) != 0:
-                        print("\nVideos:\n")
-                        for vid in channel.videos:
-                            print(f"- {vid.name} - {vid.views} views\n")
-                    else:
-                        print("No videos found. \n")
-
+                    channel.see_viewers()
+                    
                 elif action == "list":
                     if len(channel.videos) != 0:
                         print("\nVideos:\n")
