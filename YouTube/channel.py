@@ -18,17 +18,22 @@ class Channel:
         else:
             print("No videos found. \n")
 
-    def view_video(self, name):
+    def view_video(self, name, username):
         video_names = []
         for video in self.videos:
             video_names.append(video.name)
-
+    
         if name in video_names:
             for videos in self.videos:
                 if videos.name == name:
-                    videos.views += 1
-                    videos.status = "viewed"
-                    return ("You have watched video " + name)
+                    if username.name in videos.users:
+                        return ("You have watched this video before.\n")
+
+                    else:
+                        videos.views += 1
+                        videos.users.append(username.name)
+                        return ("You have watched video " + name +"\n")
+                    
 
 
     def owner_menu(self):
@@ -36,12 +41,3 @@ class Channel:
 
     def name_channel(self, name):
         self.name = name
-
-
-
-
-            
-
-
-
-
